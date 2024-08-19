@@ -1,0 +1,350 @@
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Bold.woff") format("woff"), url("../fonts/Roboto-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Medium.woff") format("woff"), url("../fonts/Roboto-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-MediumItalic.woff") format("woff"), url("../fonts/Roboto-MediumItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,
+:before,
+:after {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  margin: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h5 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+body {
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.header__logo img {
+  width: 100px;
+}
+
+.header__box-first {
+  display: flex;
+  gap: 30px;
+}
+
+.header__title {
+  font-size: 18px;
+}
+
+.header__title p {
+  margin-top: 28px;
+}
+
+.header__title p span {
+  color: #116466;
+  font-size: 20px;
+}
+
+.header__description {
+  font-size: 18px;
+  text-wrap: balance;
+  max-inline-size: 100ch;
+  text-align: center;
+  margin: 12px auto;
+}
+
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  margin-top: 50px;
+}
+
+.wrapper .main {
+  flex: 1 1 auto;
+}
+
+.main__inner .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 35px;
+}
+
+.main__inner .cards__elem {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.main__inner .cards__book-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: #E7717D;
+}
+
+.main__inner .cards__book-author {
+  text-align: center;
+  color: #127b8e;
+}
+
+.main__inner .cards__book-rating {
+  position: relative;
+}
+
+.main__inner .cards__book-rating .book-rating__inner {
+  display: flex;
+  justify-content: end;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.main__inner .cards__book-genre {
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+}
+
+.main__inner .cards .line {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.main__inner .cards .icon-ok {
+  position: absolute;
+  top: -70px;
+  right: 0;
+}
+
+.main__inner .cards .icon-ok img {
+  width: 50px;
+}
+
+.main__inner .cards__book-description {
+  flex: 1 1 auto;
+}
+
+.k {
+  flex: 0 0 calc((100vw - 40px) * 0.6 + 20px);
+}
+
+.footer {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50%);
+}
+
+.footer__develop {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footer__develop a {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .header {
+    grid-template-columns: repeat(auto-fill, 100%);
+    padding: 30px;
+  }
+
+  .header__logo img {
+    width: 70px;
+  }
+
+  .header__box-first {
+    justify-content: center;
+  }
+
+  .header__title {
+    font-size: 15px;
+  }
+
+  .header__title p {
+    margin-top: 15px;
+  }
+
+  .header__title p span {
+    font-size: 16px;
+  }
+
+  .header__box-second {
+    margin-top: 5px;
+  }
+
+  .header__description {
+    font-size: 15px;
+  }
+
+  .wrapper {
+    margin-top: 10px;
+  }
+
+  .main__inner .cards__elem {
+    padding: 10px;
+    grid-gap: 8px;
+  }
+
+  .main__inner .cards__book-title {
+    font-size: 16px;
+  }
+
+  .main__inner .cards__book-author {
+    font-size: 13px;
+  }
+
+  .main__inner .cards__book-rating .book-rating__inner img {
+    width: 20px;
+  }
+
+  .main__inner .cards__book-year {
+    font-size: 13px;
+  }
+
+  .main__inner .cards__book-genre {
+    font-size: 12px;
+  }
+
+  .main__inner .cards .icon-ok {
+    top: -44px;
+  }
+
+  .main__inner .cards .icon-ok img {
+    width: 35px;
+  }
+
+  .main__inner .cards__book-description {
+    font-size: 14px;
+  }
+
+  .footer {
+    font-size: 14px;
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 370px) {
+  .main__inner .cards {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 320px) {
+  .header {
+    padding: 20px;
+  }
+
+  .header__logo img {
+    width: 50px;
+  }
+
+  .header__description {
+    font-size: 14px;
+  }
+
+  .wrapper {
+    margin-top: 5px;
+  }
+
+  .footer {
+    font-size: 12px;
+  }
+}
