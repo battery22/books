@@ -1,3 +1,10 @@
+# Visual Studio Code # 
+.vscode/*
+.vscode/launch.json 
+!.vscode/settings.json 
+!.vscode/tasks.json 
+!.vscode/extensions.json 
+.history
 # Django #
 *.log
 *.pot
@@ -69,10 +76,3 @@ env.bak/
 virtual.bak/ 
 # mypy 
 .mypy_cache/
-# Visual Studio Code # 
-.vscode/* 
-!.vscode/settings.json 
-!.vscode/tasks.json 
-!.vscode/launch.json 
-!.vscode/extensions.json 
-.history
