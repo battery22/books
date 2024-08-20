@@ -12,7 +12,11 @@
 
     </title>
 </head>
-
+{% for t in ff %}
+    <p>{{ t.title }}</p>
+    <p>{{ t.year }}</p>
+{% endfor %}
+<p>------------------------------------------</p>
 <body>
     <header class="header">
     <div class="header__box-first">

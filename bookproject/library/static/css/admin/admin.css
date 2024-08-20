@@ -1,0 +1,25 @@
+#changelist-filter {
+  flex: 0 0 110px !important;
+  margin: 0 0 0 10px !important;
+}
+#nav-sidebar {
+  flex: 0 0 180px;
+}
+#content {
+  padding: 10px 10px;
+}
+.field-year input{
+  width: 32px;
+}
+.field-rate .related-widget-wrapper select{
+  width: 50px;
+}
+.action-checkbox, .field-id{
+  padding: 0;
+}
+.related-widget-wrapper select{
+  width: 150px;
+} 
+.main.shifted > #nav-sidebar + .content {
+  max-width: calc(100% - 30px);
+}
