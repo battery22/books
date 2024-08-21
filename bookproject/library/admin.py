@@ -1,10 +1,11 @@
 from django.contrib import admin
-
+from modeltranslation.admin import TranslationAdmin
 from .models import BookName, BookAuthor, BookRating, BookGenre
 
 
+
 @admin.register(BookName)
-class BookNameAdmin(admin.ModelAdmin):
+class BookNameAdmin(TranslationAdmin):
     list_display = ("id", "title", "author", "year", "rate", "get_genres")
     list_editable = ("author", "year", "rate")
     list_display_links = ("title",)
@@ -20,7 +21,7 @@ class BookNameAdmin(admin.ModelAdmin):
 
 
 @admin.register(BookAuthor)
-class BookAuthorAdmin(admin.ModelAdmin):
+class BookAuthorAdmin(TranslationAdmin):
     list_display = ("name", "surname", "middle_name")
 
 
@@ -30,7 +31,7 @@ class BookRatingAdmin(admin.ModelAdmin):
 
 
 @admin.register(BookGenre)
-class BookGenreAdmin(admin.ModelAdmin):
+class BookGenreAdmin(TranslationAdmin):
     list_display = (
         "id",
         "book_genre",

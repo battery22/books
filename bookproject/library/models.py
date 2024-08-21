@@ -6,6 +6,7 @@ class BookName(models.Model):
     description = models.TextField(blank=True)
     link = models.URLField(blank=True)
     year = models.CharField(max_length=255, blank=True)
+    test = models.CharField(max_length=255, blank=True)
 
     # one to many
     author = models.ForeignKey(
