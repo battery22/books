@@ -200,7 +200,7 @@ body {
 .main__inner .cards__book-genre {
   font-style: italic;
   font-weight: 100;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .main__inner .cards .line {
@@ -219,11 +219,15 @@ body {
 
 .main__inner .cards__book-description {
   flex: 1 1 auto;
+  
+}
+.main__inner .cards__book-description .description__text{
+  font-size: 14px;
 }
 
-.k {
+/* .k {
   flex: 0 0 calc((100vw - 40px) * 0.6 + 20px);
-}
+} */
 
 .footer {
   padding: 40px;
