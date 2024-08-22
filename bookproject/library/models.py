@@ -6,9 +6,7 @@ class BookName(models.Model):
     description = models.TextField(blank=True)
     link = models.URLField(blank=True)
     year = models.CharField(max_length=255, blank=True)
-    test = models.CharField(max_length=255, blank=True)
-
-    # one to many
+       # one to many
     author = models.ForeignKey(
         "BookAuthor",
         on_delete=models.PROTECT,
@@ -23,10 +21,15 @@ class BookName(models.Model):
         blank=True,
     )
     #  many to many
-    genre = models.ManyToManyField("BookGenre", related_name="genre", blank=True)
+    genre = models.ManyToManyField("BookGenre", related_name="genre", blank=True) 
 
     def __str__(self):
         return self.title
+    
+    def get_genres_display(self):
+        genres = self.genre.all()
+        return '\n'.join(genre.book_genre for genre in genres)
+       # {{ book.get_genres_display|linebreaksbr }} in HTML
 
     class Meta:
         verbose_name_plural = "Книги"

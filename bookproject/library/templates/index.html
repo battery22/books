@@ -1,5 +1,6 @@
-{% load static %}
 {% load i18n %}
+{% load static %}
+
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE }}">
 
@@ -9,20 +10,19 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Главная</title>
+    <title>{% trans 'Главная' %}</title>
 </head>
 <!-- ---------------------------------------------------------- -->
 
 <body>
-    <form action="{% url 'set_language' %}" method="post">
+    <form action="{% url 'set_language' %}" class="languages" method="post">
         {% csrf_token %}
         <select name="language" onchange="this.form.submit()">
-            {% get_current_language as LANGUAGE_CODE %}
-            {% get_available_languages as LANGUAGES %}
-            {% get_language_info_list for LANGUAGES as languages %}
-            {% for language in languages %}
-            <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %}selected{% endif %}>
-                {{ language.name_local }} ({{ language.name }})
+            {% get_current_language as current_lang %}
+            {% get_available_languages as languages %}
+            {% for lang in languages %}
+            <option value="{{ lang.0 }}" {% if lang.0 == current_lang %}selected{% endif %}>
+                {{ lang.1 }}
             </option>
             {% endfor %}
         </select>
@@ -33,12 +33,11 @@
         <div class="header__box-first">
             <div class="header__logo"><img src="{% static 'images/book_icon.svg' %}" alt=""></div>
             <div class="header__title">
-                <p>Моя библиотека <br><span>&#8220;Книжный лабиринт&#8220;</span></p>
+                <p>{% trans 'Моя библиотека'%} <br><span>&#8220;{% trans 'Книжный лабиринт' %}&#8220;</span></p>
             </div>
         </div>
         <div class="header__box-second">
-            <p class="header__description">На этом сайте собраны книги,которые уже прочитаны и те, что ждут своего часа.
-                Отмечаю, что прочитано, и планирую свои будущие литературные путешествия</p>
+            <p class="header__description">{% trans "На этом сайте собраны книги, которые уже прочитаны и те, что ждут своего часа. Отмечаю, что прочитано, и планирую свои будущие литературные путешествия" %}</p>
         </div>
     </header>
 
@@ -51,10 +50,8 @@
                         <h2 class="cards__book-title">{{ book.title }}</h2>
                         <p class="cards__book-author">{{ book.author }}</p>
                         <p class="cards__book-genre">
-                           {% for genre in book.genre.all %}
-                           {{ genre.book_genre }}
-                           {% if not forloop.last %},<br>{% endif %}
-                           {% endfor %}
+      
+                           {{ book.get_genres_display|linebreaksbr }}
                         </p>
                         <p class="cards__book-year">{{ book.year }}</p>
                         <div class="cards__book-rating">
@@ -70,7 +67,7 @@
                                     </picture>
                                 </div>
                                 {% else %}
-                                <li>Не прочитано...</li>
+                                <li>{% trans 'Не прочитано...' %}</li>
                                 {% endif %}
                             </ul>
                         </div>
