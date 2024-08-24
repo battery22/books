@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from library.models import BookName
+from library.models import BookName, BookQuote
 menu = ["about", "contacts"]
 
 
 def index(request):
- booknames = BookName.objects.select_related('author', 'rate').prefetch_related('genre').all()
+ booknames = BookName.objects.select_related('author', 'rate').prefetch_related('genre', 'quotes').all()
+ 
  # Add the range calculation for star ratings
  for book in booknames: # fix it 
    if book.rate:

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import BookName, BookAuthor, BookRating, BookGenre
+from .models import BookName, BookAuthor, BookQuote, BookRating, BookGenre
 
 
 
@@ -36,3 +36,17 @@ class BookGenreAdmin(TranslationAdmin):
         "id",
         "book_genre",
     )
+
+
+@admin.register(BookQuote)
+class Admin(TranslationAdmin):
+    list_display = (
+        "text",
+        'get_book',
+    )
+    def get_book(self, bookqoute: BookQuote):
+        return bookqoute.book.title
+    
+    get_book.short_description = "Книга" # for adm-p
+    
+    

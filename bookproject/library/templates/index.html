@@ -71,9 +71,15 @@
                                 {% endif %}
                             </ul>
                         </div>
+                        <div class="cards__book-quotes">
+                               {% for quote in book.quotes.all %}
+                               <p><q>{{ quote.text }}</q></p>
+                               {% endfor %}
+                        </div>
                         <div class="cards__book-description">
-                            <p class="description__text"> {{ book.description }} </p>
-                            <!-- <p class="description__text"></p> -->
+                            <p class="description__text short-content"> {{ book.description|truncatewords:15}} </p>
+                            <p class="description__text more-content"  style="display: none;"> {{ book.description}} </p>
+                            <button class="btn-toggle" onclick="toggleContent(this)">{% trans 'Читать дальше' %}</button>
                         </div>
                         <div class="line"></div>
                     </li>
@@ -82,10 +88,6 @@
             </div>
         </main>
     </div>
-
-
-    <!-------------------------------------------------------------  -->
-
     <footer class="footer">
         <div class="footer__copyr">
             <p>&copy; my-books.com</p>
@@ -96,6 +98,7 @@
         </div>
 
     </footer>
+    <script src="{% url 'javascript-catalog' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 

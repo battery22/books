@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 class BookName(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
@@ -11,17 +11,18 @@ class BookName(models.Model):
         "BookAuthor",
         on_delete=models.PROTECT,
         null=True,
-        related_name="author",
+        # related_name="author",
+        related_name="books",
     )
     rate = models.ForeignKey(
         "BookRating",
         on_delete=models.PROTECT,
         null=True,
-        related_name="rate",
+        related_name="books",
         blank=True,
     )
     #  many to many
-    genre = models.ManyToManyField("BookGenre", related_name="genre", blank=True) 
+    genre = models.ManyToManyField("BookGenre", related_name="books", blank=True) 
 
     def __str__(self):
         return self.title
@@ -32,7 +33,7 @@ class BookName(models.Model):
        # {{ book.get_genres_display|linebreaksbr }} in HTML
 
     class Meta:
-        verbose_name_plural = "Книги"
+        verbose_name_plural = "Книги" # for adm-pan
 
 
 class BookAuthor(models.Model):
@@ -48,8 +49,7 @@ class BookAuthor(models.Model):
 
 
 class BookRating(models.Model):
-    # objects = None
-    rating = models.PositiveIntegerField(blank=True)
+    rating = models.PositiveIntegerField(blank=True, validators=[MinValueValidator(0), MaxValueValidator(5)])
 
     def __str__(self):
         return f"{self.rating}"
@@ -66,3 +66,20 @@ class BookGenre(models.Model):
 
     class Meta:
         verbose_name_plural = "Жанр"
+
+class BookQuote(models.Model):
+    text = models.CharField(max_length=255, blank=True, verbose_name='Цитата')
+    
+    book = models.ForeignKey(
+        "BookName",
+        on_delete=models.PROTECT,
+        null=True,
+        related_name='quotes'
+    )
+    
+    def __str__(self):
+        return self.text
+    
+    class Meta: 
+        verbose_name = 'Цитата из книги' # adm-pan
+        verbose_name_plural = 'Цитаты из книг'

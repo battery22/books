@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import BookName, BookAuthor, BookGenre
+from .models import BookName, BookAuthor, BookGenre, BookQuote
 
 @register(BookName)
 class BookNameTranslationOptions(TranslationOptions):
@@ -12,3 +12,7 @@ class BookAuthorTranslationOptions(TranslationOptions):
 @register(BookGenre)
 class BookGenreTranslationOptions(TranslationOptions):
     fields = ('book_genre',)    
+    
+@register(BookQuote)
+class BookQuoteTranslationOptions(TranslationOptions):
+    fields = ('text',)    

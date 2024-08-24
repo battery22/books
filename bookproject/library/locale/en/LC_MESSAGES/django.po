@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-21 22:05+0400\n"
+"POT-Creation-Date: 2024-08-23 23:01+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,21 +22,28 @@ msgstr ""
 msgid "Главная"
 msgstr "Main"
 
-#: .\templates\index.html:37
+#: .\templates\index.html:36
 msgid "Моя библиотека"
 msgstr "My Library"
 
-#: .\templates\index.html:37
+#: .\templates\index.html:36
 msgid "Книжный лабиринт"
 msgstr "The Book Labyrinth"
 
-#: .\templates\index.html:41
+#: .\templates\index.html:40
 msgid ""
 "На этом сайте собраны книги, которые уже прочитаны и те, что ждут своего "
 "часа. Отмечаю, что прочитано, и планирую свои будущие литературные "
 "путешествия"
-msgstr "On this site, books that have already been read and those that are waiting for their time are collected. I mark what has been read and plan my future literary journeys."
+msgstr ""
+"On this site, books that have already been read and those that are waiting "
+"for their time are collected. I mark what has been read and plan my future "
+"literary journeys."
 
-#: .\templates\index.html:73
+#: .\templates\index.html:70
 msgid "Не прочитано..."
 msgstr "Awaiting reading..."
+
+#: .\templates\index.html:82
+msgid "Читать дальше"
+msgstr "Read more"

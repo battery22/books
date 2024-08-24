@@ -15,6 +15,20 @@ function isWebp() {
 			document.documentElement.classList.add(className);
 	});
 }
- 
+function toggleContent(button) {
+	const cards__book = button.parentElement;
+	const shortContent = cards__book.querySelector('.short-content');
+	const moreContent = cards__book.querySelector('.more-content');
+
+	if (moreContent.style.display === 'none') {
+			moreContent.style.display = 'block';
+			shortContent.style.display = 'none';
+			button.textContent = gettext('Спрятать');
+	} else {
+			moreContent.style.display = 'none';
+			shortContent.style.display = 'block';
+			button.textContent = gettext('Читать дальше');
+	}
+} 
 isWebp();
 

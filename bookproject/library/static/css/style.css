@@ -1,4 +1,11 @@
 @font-face {
+	font-family: MarckScript;
+	font-display: swap;
+	src: url("../fonts/MarckScript-Regular.woff") format("woff"), url("../fonts/MarckScript-Regular.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+}
+@font-face {
   font-family: Roboto;
   font-display: swap;
   src: url("../fonts/Roboto-Bold.woff") format("woff"), url("../fonts/Roboto-Bold.woff2") format("woff2");
@@ -227,6 +234,23 @@ body {
   flex: 1 1 auto;
 
 }
+ .main__inner .cards__book-quotes {
+   padding: 10px 20px;
+   margin: 20px 0; 
+  font-family: 'Georgia', serif; 
+  font-style: italic;
+}
+
+.main__inner .cards__book-quotes q {
+  quotes: "“" "”" "‘" "’";
+}
+
+.main__inner .cards__book-quotes p {
+  margin: 10px 0; 
+  line-height: 1.6;
+  color: #333; 
+  font-size: 12px;
+}
 
 .main__inner .cards__book-description .description__text {
   font-size: 14px;
@@ -332,6 +356,25 @@ body {
   }
 }
 
+
+/* -------------------------- */
+.hidden-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 2s ease-out;
+}
+
+.show .hidden-text {
+  max-height: 100px; /* Задайте максимальную высоту */
+}
+
+.cards__book-description button {
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 10px;
+  opacity: .8;
+}
+/* ------------------------------------------ */
 @media (max-width: 370px) {
   .main__inner .cards {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -359,3 +402,5 @@ body {
     font-size: 12px;
   }
 }
+
+/* ------------------------------- */
