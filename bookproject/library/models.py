@@ -1,5 +1,10 @@
 from django.db import models
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
+import io
+from PIL import Image
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.urls import reverse
 
 class BookName(models.Model):
     title = models.CharField(max_length=255, verbose_name="Название")
@@ -40,13 +45,52 @@ class BookAuthor(models.Model):
     name = models.CharField(max_length=255)
     surname = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True)
+    photo = ProcessedImageField(upload_to='authors/', 
+                              processors=[ResizeToFill(300, 300)],
+                              format='JPEG',
+                              options={'quality': 70},
+                              blank=True, 
+                              null=True, 
+                              default=None, 
+                              verbose_name='Фото JPEG'
+                              )
+    photo_webp = ProcessedImageField(
+        upload_to='authors/',
+        processors=[ResizeToFill(300, 300)],
+        format='WEBP',
+        options={'quality': 70},
+        blank=True,
+        null=True,
+        verbose_name='Фото (WebP)'
+    )
+    biography = models.TextField(blank=True, verbose_name='Биография')
+    
+    def get_absolute_url(self):
+     return reverse('author', kwargs={'author_slug': self.slug})
 
     def __str__(self):
-        return f"{self.name} {self.surname} {self.middle_name}"
+        return f"{self.name} {self.surname}"
 
     class Meta:
         verbose_name_plural = "Автор"
-
+    
+    def save(self, *args, **kwargs):
+        if self.photo:
+            # save original
+            img = Image.open(self.photo)
+            # img = img.convert('RGB')
+         
+            # # create img WebP
+            webp_image = io.BytesIO()
+            img.save(webp_image, format='WEBP', quality=75)
+            webp_image.seek(0)
+            
+            # save WebP
+            self.photo_webp.save(f'{self.photo.name.split(".")[0]}.webp', 
+                                 content=webp_image, 
+                                 save=False)
+        super(BookAuthor, self).save(*args, **kwargs)
 
 class BookRating(models.Model):
     rating = models.PositiveIntegerField(blank=True, validators=[MinValueValidator(0), MaxValueValidator(5)])
@@ -83,3 +127,5 @@ class BookQuote(models.Model):
     class Meta: 
         verbose_name = 'Цитата из книги' # adm-pan
         verbose_name_plural = 'Цитаты из книг'
+        
+            

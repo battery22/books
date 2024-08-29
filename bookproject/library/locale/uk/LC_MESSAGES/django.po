@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-08-23 23:01+0400\n"
+"POT-Creation-Date: 2024-08-29 17:16+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,31 +17,32 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .\templates\index.html:13
-msgid "Главная"
-msgstr "Головна"
+#: .\templates\author.html:19
+msgid "Книги автора в моей библиотеке"
+msgstr "Книги автора, які є в моїй бібліотеці"
 
-#: .\templates\index.html:36
-msgid "Моя библиотека"
-msgstr "Моя бібліотека"
-
-#: .\templates\index.html:36
-msgid "Книжный лабиринт"
-msgstr "Книжковий лабіринт"
-
-#: .\templates\index.html:40
-msgid ""
-"На этом сайте собраны книги, которые уже прочитаны и те, что ждут своего "
-"часа. Отмечаю, что прочитано, и планирую свои будущие литературные "
-"путешествия"
-msgstr ""
-"На цьому сайті зібрані книги, які вже прочитані і ті, що чекають на свійчас. "
-"Наголошую, що прочитано, і планую свої майбутні літературніподорожі"
-
-#: .\templates\index.html:70
+#: .\templates\index.html:30
 msgid "Не прочитано..."
 msgstr "Ще не прочитано..."
 
-#: .\templates\index.html:82
+#: .\templates\index.html:42
 msgid "Читать дальше"
 msgstr "Читати далі"
+
+#~ msgid "Главная"
+#~ msgstr "Головна"
+
+#~ msgid "Моя библиотека"
+#~ msgstr "Моя бібліотека"
+
+#~ msgid "Книжный лабиринт"
+#~ msgstr "Книжковий лабіринт"
+
+#~ msgid ""
+#~ "На этом сайте собраны книги, которые уже прочитаны и те, что ждут своего "
+#~ "часа. Отмечаю, что прочитано, и планирую свои будущие литературные "
+#~ "путешествия"
+#~ msgstr ""
+#~ "На цьому сайті зібрані книги, які вже прочитані і ті, що чекають на "
+#~ "свійчас. Наголошую, що прочитано, і планую свої майбутні "
+#~ "літературніподорожі"

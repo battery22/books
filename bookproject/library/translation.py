@@ -7,7 +7,7 @@ class BookNameTranslationOptions(TranslationOptions):
     
 @register(BookAuthor)
 class BookAuthorTranslationOptions(TranslationOptions):
-    fields = ('name', 'surname', 'middle_name')
+    fields = ('name', 'surname', 'middle_name', 'biography')
 
 @register(BookGenre)
 class BookGenreTranslationOptions(TranslationOptions):

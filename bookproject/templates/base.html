@@ -1,0 +1,68 @@
+{% load i18n %}
+{% load static %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+<div class="wrapper">
+  <form action="{% url 'set_language' %}" class="languages" method="post">
+    {% csrf_token %}
+    <select class="languages_select" name="language" onchange="this.form.submit()">
+        {% get_current_language as current_lang %}
+        {% get_available_languages as languages %}
+        {% for lang in languages %}
+        <option value="{{ lang.0 }}" {% if lang.0 == current_lang %}selected{% endif %}>
+            {{ lang.1 }}
+        </option>
+        {% endfor %}
+    </select>
+    <input type="hidden" name="next" value="{{ redirect_to }}">
+  </form>
+  <header class="header">
+    <div class="header__box-first">
+        {% if request.path != '/' and request.path not in '/en/' and request.path not in '/ru/' and request.path not in '/uk/'%}
+            <a href="{% url 'home' %}" class="header__logo">
+                <img src="{% static 'images/book_icon.svg' %}" alt="">
+            </a>
+            <div class="header__title">
+                <a href="{% url 'home' %}">
+                    <p>{% trans 'Моя библиотека'%} <br><span>&#8220;{% trans 'Книжный лабиринт' %}&#8220;</span></p>
+                </a>
+            </div>
+        {% else %}
+            <div class="header__logo">
+                <img src="{% static 'images/book_icon.svg' %}" alt="">
+            </div>
+            <div class="header__title">
+                <p>{% trans 'Моя библиотека'%} <br><span>&#8220;{% trans 'Книжный лабиринт' %}&#8220;</span></p>
+            </div>
+        {% endif %}
+    </div>
+    <div class="header__box-second">
+        <p class="header__description">{% trans "На этом сайте собраны книги, которые уже прочитаны и те, что ждут своего часа. Отмечаю, что прочитано, и планирую свои будущие литературные путешествия" %}</p>
+    </div>
+  </header>
+        {% block content %} {% endblock %}
+  <footer class="footer">
+    <div class="footer__copyr">
+        <p>&copy; my-books.com</p>
+        <p>2024</p>
+    </div>
+    <div class="footer__develop">
+        <a href="#">codetempus</a>
+    </div>
+  
+  </footer>
+</div>
+<script src="{% url 'javascript-catalog' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

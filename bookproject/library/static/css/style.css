@@ -123,11 +123,19 @@ body {
   justify-content: end;
   padding: 5px;
 }
+.select-container{
+  min-width: 50px;
+  text-align: center;
+}
+.select-box{
+  border: none !important;
+  appearance: none;
 
+}
 .header {
   display: grid;
   grid-template-columns: repeat(auto-fill, 50%);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
   padding: 20px;
 }
 
@@ -152,6 +160,9 @@ body {
   color: #116466;
   font-size: 20px;
 }
+.header__title a{
+  color: black;
+}
 
 .header__description {
   font-size: 18px;
@@ -166,20 +177,17 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  margin-top: 50px;
+  
 }
 
-.wrapper .main {
-  flex: 1 1 auto;
-}
 
-.main__inner .cards {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 35px;
 }
 
-.main__inner .cards__elem {
+.cards__elem {
   display: flex;
   flex-direction: column;
   min-height: 100%;
@@ -187,81 +195,102 @@ body {
   padding: 20px;
 }
 
-.main__inner .cards__book-title {
+.cards__book-title {
   text-align: center;
   font-size: 22px;
   font-weight: 500;
   color: #E7717D;
 }
 
-.main__inner .cards__book-author {
+.cards__book-author {
   text-align: center;
+  
+}
+.cards__book-author a{
   color: #127b8e;
 }
-
-.main__inner .cards__book-rating {
+.cards__book-rating {
   position: relative;
 }
 
-.main__inner .cards__book-rating .book-rating__inner {
+.book-rating__inner {
   display: flex;
   justify-content: end;
   font-size: 12px;
   font-weight: 100;
 }
 
-.main__inner .cards__book-genre {
+.cards__book-genre {
   font-style: italic;
   font-weight: 100;
   font-size: 12px;
 }
 
-.main__inner .cards .line {
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
+.cards .line {
+  /* border-top: 1px solid rgba(0, 0, 0, 0.2); */
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
 }
 
-.main__inner .cards .icon-ok {
+.icon-ok {
   position: absolute;
   top: -70px;
   right: 0;
 }
 
-.main__inner .cards .icon-ok img {
+.icon-ok img {
   width: 50px;
 }
 
-.main__inner .cards__book-description {
+.cards__book-description {
   flex: 1 1 auto;
 
 }
- .main__inner .cards__book-quotes {
+ .cards__book-quotes {
    padding: 10px 20px;
    margin: 20px 0; 
   font-family: 'Georgia', serif; 
   font-style: italic;
 }
 
-.main__inner .cards__book-quotes q {
+.cards__book-quotes q {
   quotes: "“" "”" "‘" "’";
 }
 
-.main__inner .cards__book-quotes p {
+.cards__book-quotes p {
   margin: 10px 0; 
   line-height: 1.6;
   color: #333; 
-  font-size: 12px;
-}
-
-.main__inner .cards__book-description .description__text {
   font-size: 14px;
 }
 
+.description__text {
+  font-size: 14px;
+}
+/* -------------------------- */
+.hidden-text {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 2s ease-out;
+}
+
+.show .hidden-text {
+  max-height: 100px; /* Задайте максимальную высоту */
+}
+
+.cards__book-description button {
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 10px;
+  opacity: .8;
+  background-color: #fff;
+}
+/* ------------------------- */
 /* .k {
   flex: 0 0 calc((100vw - 40px) * 0.6 + 20px);
 } */
 
 .footer {
-  padding: 40px;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, 50%);
 }
@@ -274,7 +303,48 @@ body {
 .footer__develop a {
   color: #000;
 }
+/* ----------------------------- */
+.wrapper .author {
+  flex: 1 1 auto;
+}
 
+.author_inner{
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 20px;
+  padding: 30px;
+}
+.author_img, .author_name{
+  text-align: center;
+}
+.author_name{
+  color: #127b8e;
+  font-size: 20px;
+}
+.author_main{
+  border-right: 1px dashed rgba(0, 0, 0, 0.2);
+  padding-right: 25px;
+}
+.author_main > div:not(:first-child){
+ margin-top: 50px;
+ }
+.mybooks_title p{
+  font-size: 13px;
+  font-weight: 700;
+  font-style: italic;
+}
+.mybooks_text{
+  font-size: 13px;
+  margin-top: 20px;
+}
+.mybooks_text p{
+  margin-top: 15px;
+}
+.author_biography p {
+  /* text-indent: 20px; Отступ первой строки в абзаце */
+  margin-bottom: 10px; /* Отступ снизу между абзацами */
+}
+/* --------------------------- */
 @media (max-width: 768px) {
   .header {
     grid-template-columns: repeat(auto-fill, 100%);
@@ -352,27 +422,23 @@ body {
 
   .footer {
     font-size: 14px;
-    padding: 20px 30px;
+    padding: 8px 15px;
   }
-}
 
-
-/* -------------------------- */
-.hidden-text {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 2s ease-out;
-}
-
-.show .hidden-text {
-  max-height: 100px; /* Задайте максимальную высоту */
-}
-
-.cards__book-description button {
-  cursor: pointer;
-  margin-top: 10px;
-  font-size: 10px;
-  opacity: .8;
+  .author_inner{
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  .author_main{
+    border-right: none;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    padding-right: 0;
+    padding-bottom: 25px;
+  }
+  .mybooks_text{
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+    padding-bottom: 25px;
+  }
 }
 /* ------------------------------------------ */
 @media (max-width: 370px) {
@@ -380,7 +446,6 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
 }
-
 @media (max-width: 320px) {
   .header {
     padding: 20px;
@@ -402,5 +467,4 @@ body {
     font-size: 12px;
   }
 }
-
-/* ------------------------------- */
+/* ----------author--------------------------- */

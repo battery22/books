@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<div class="author">
+  <div class="author_inner">
+       <div class="author_main">
+          <div class="author_img">
+            {% if  author.photo or author.photo_webp %}
+            <picture><source srcset="{{ author.photo_webp.url }}" type="image/webp"><img src="{{ author.photo.url }}" alt=""></picture>
+            {% else %}
+            {% endif %}
+          </div>
+          <div class="author_name">{{ author.name}} {{ author.surname}}</div>
+          <div class="author_biography"><p>{{ author.biography|linebreaks}}</p> </div>
+       </div>
+       <div class="author_list">
+       <div class="mybooks_title"><p>{% trans 'Книги автора в моей библиотеке' %}</p></div>
+       <div class="mybooks_text">
+        {% for book in author.books.all %}
+        <p>{{ book.title }}</p>
+        {% endfor %}
+      </div>
+       </div>
+  </div>
+</div>
+{% endblock%}
+
+
+
+
+
+

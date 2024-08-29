@@ -78,3 +78,5 @@ virtual.bak/
 .mypy_cache/
 # ruff
 ruff.toml
+#media
+media/

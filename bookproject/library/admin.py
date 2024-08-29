@@ -22,7 +22,7 @@ class BookNameAdmin(TranslationAdmin):
 
 @admin.register(BookAuthor)
 class BookAuthorAdmin(TranslationAdmin):
-    list_display = ("name", "surname", "middle_name")
+    list_display = ("name", "surname", "middle_name", 'biography', 'photo')
 
 
 @admin.register(BookRating)
